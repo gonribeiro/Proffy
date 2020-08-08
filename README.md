@@ -1,14 +1,16 @@
+## ReactJs
 ``` 
-ReactJs
-create-react-app web --template typescript
-yarn add react-router-dom
-yarn add @types/react-router-dom -D
-yarn add axios
+$ create-react-app web --template typescript
+$ yarn add react-router-dom
+$ yarn add @types/react-router-dom -D
+$ yarn add axios
+```
 
-NodeJs
-yarn init -y 
-yarn add typescript -D 
-yarn tsc --init
+## NodeJs
+```
+$ yarn init -y 
+$ yarn add typescript -D 
+$ yarn tsc --init
 tsconfig.json -> "target": "es5" para "target": "es2017", 
 
 yarn add ts-node-dev -D
@@ -17,9 +19,9 @@ package.json ->
     "start": "tsnd --transpile-only --ignore-watch node_modules --respawn src/server.ts"
 },
 
-yarn add express
-yarn add @types/express -D
-yarn add knex sqlite3
+$ yarn add express
+$ yarn add @types/express -D
+$ yarn add knex sqlite3
 
 package.json -> 
 "scripts": {
@@ -43,6 +45,23 @@ Exemplo de post:
     ]
 }
 
-yarn add cors
-yarn add @types/cors -D
+$ yarn add cors
+$ yarn add @types/cors -D
+```
+
+## Mobile
+```
+$ npm install -g expo-cli
+$ expo init mobile
+    - blank typescript
+    - play store -> expo client
+    - Run on Android device/emulator
+
+Caso erros ao executar: https://github.com/Rocketseat/expo-common-issues
+
+$ expo install expo-font @expo-google-fonts/archivo @expo-google-fonts/poppins
+$ yarn add @react-navigation/native
+$ expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+$ yarn add @react-navigation/stack
+$ yarn add @react-navigation/bottom-tabs
 ```
