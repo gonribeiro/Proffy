@@ -1,4 +1,7 @@
-## ReactJs
+# Projeto para Estudo de ReactJS, React Native e NodeJS
+## Anotações rápidas:
+
+### ReactJS
 ``` 
 $ create-react-app web --template typescript
 $ yarn add react-router-dom
@@ -6,7 +9,7 @@ $ yarn add @types/react-router-dom -D
 $ yarn add axios
 ```
 
-## NodeJs
+### NodeJs
 ```
 $ yarn init -y 
 $ yarn add typescript -D 
@@ -49,7 +52,7 @@ $ yarn add cors
 $ yarn add @types/cors -D
 ```
 
-## Mobile
+### React Native
 ```
 $ npm install -g expo-cli
 $ expo init mobile
@@ -64,4 +67,6 @@ $ yarn add @react-navigation/native
 $ expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 $ yarn add @react-navigation/stack
 $ yarn add @react-navigation/bottom-tabs
+$ yarn add axios
+$ expo install @react-native-community/async-storage
 ```
