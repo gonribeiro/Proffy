@@ -1,0 +1,9 @@
+C:\Proffy\server\Proffy.CourseMicroservice.Domain\bin\Debug\netcoreapp3.1\Proffy.CourseMicroservice.Domain.deps.json
+C:\Proffy\server\Proffy.CourseMicroservice.Domain\bin\Debug\netcoreapp3.1\Proffy.CourseMicroservice.Domain.dll
+C:\Proffy\server\Proffy.CourseMicroservice.Domain\bin\Debug\netcoreapp3.1\Proffy.CourseMicroservice.Domain.pdb
+C:\Proffy\server\Proffy.CourseMicroservice.Domain\obj\Debug\netcoreapp3.1\Proffy.CourseMicroservice.Domain.AssemblyInfoInputs.cache
+C:\Proffy\server\Proffy.CourseMicroservice.Domain\obj\Debug\netcoreapp3.1\Proffy.CourseMicroservice.Domain.AssemblyInfo.cs
+C:\Proffy\server\Proffy.CourseMicroservice.Domain\obj\Debug\netcoreapp3.1\Proffy.CourseMicroservice.Domain.csproj.CoreCompileInputs.cache
+C:\Proffy\server\Proffy.CourseMicroservice.Domain\obj\Debug\netcoreapp3.1\Proffy.CourseMicroservice.Domain.dll
+C:\Proffy\server\Proffy.CourseMicroservice.Domain\obj\Debug\netcoreapp3.1\Proffy.CourseMicroservice.Domain.pdb
+C:\Proffy\server\Proffy.CourseMicroservice.Domain\obj\Debug\netcoreapp3.1\Proffy.CourseMicroservice.Domain.csprojAssemblyReference.cache

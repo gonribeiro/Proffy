@@ -8,7 +8,7 @@ import studyIcon from '../../assets/images/icons/study.svg'
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg'
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg'
 
-import api from '../../services/api'
+import usersapi from '../../services/User'
 
 import './styles.css'
 
@@ -16,19 +16,20 @@ function Landing() {
     const [totalConnections, setTotalConnections] = useState(0);
 
     useEffect(() => {
-        api.get('connections').then(response => {
-            const { total } = response.data;
+        usersapi.get('v1/connections/total')
+            .then(response => {
+                const total = response.data;
 
             setTotalConnections(total);
         })
     }, []);
 
     return (
-        <div id="page-landing">
+        <div id="page-landing">            
             <div id="page-landing-content" className="container">
                 <div className="logo-container">
                     <img src={logoImg} alt="Proffy" />
-                    <h2>Sua plataforma de estudos online</h2>
+                    <h2>Precisou de aula particular? Encontre quem te ensine!</h2>
                 </div>
 
                 <img 
@@ -40,12 +41,12 @@ function Landing() {
                 <div className="buttons-container">
                     <Link to="study" className="study">
                         <img src={studyIcon} alt="Estudar"/>
-                        Estudar
+                        Encontrar Proffy
                     </Link>
 
-                    <Link to="give-classes" className="give-classes">
+                    <Link to={localStorage.getItem('proffyId') !== null ? 'teacher-edit' : 'login'} className="give-classes">
                         <img src={giveClassesIcon} alt="Dar aulas"/>
-                        Dar aulas
+                        {localStorage.getItem('proffyId') !== null ? 'Meus dados' : 'Dar aulas' } 
                     </Link>
                 </div>
 

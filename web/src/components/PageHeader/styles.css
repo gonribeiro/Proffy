@@ -14,17 +14,19 @@
     padding: 1.6rem 0;
 }
 
+.page-header .top-bar-container .top-bar-user {
+    text-align: right;
+}
+
 .page-header .top-bar-container a {
     height: 3.2rem;
     transition: opacity 0.2s;
+    color: white;
+    text-decoration: none;
 }
 
 .page-header .top-bar-container a:hover {
     opacity: 0.6;
-}
-
-.page-header .top-bar-container > img {
-    height: 1.6rem;
 }
 
 .page-header .header-content {

@@ -1,0 +1,16 @@
+C:\Proffy\server\Proffy.EmailMicroservice.Application\bin\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.exe
+C:\Proffy\server\Proffy.EmailMicroservice.Application\obj\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.AssemblyInfoInputs.cache
+C:\Proffy\server\Proffy.EmailMicroservice.Application\obj\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.AssemblyInfo.cs
+C:\Proffy\server\Proffy.EmailMicroservice.Application\bin\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.deps.json
+C:\Proffy\server\Proffy.EmailMicroservice.Application\bin\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.runtimeconfig.json
+C:\Proffy\server\Proffy.EmailMicroservice.Application\bin\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.runtimeconfig.dev.json
+C:\Proffy\server\Proffy.EmailMicroservice.Application\bin\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.dll
+C:\Proffy\server\Proffy.EmailMicroservice.Application\bin\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.pdb
+C:\Proffy\server\Proffy.EmailMicroservice.Application\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
+C:\Proffy\server\Proffy.EmailMicroservice.Application\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+C:\Proffy\server\Proffy.EmailMicroservice.Application\obj\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.csprojAssemblyReference.cache
+C:\Proffy\server\Proffy.EmailMicroservice.Application\obj\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.csproj.CopyComplete
+C:\Proffy\server\Proffy.EmailMicroservice.Application\obj\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.dll
+C:\Proffy\server\Proffy.EmailMicroservice.Application\obj\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.pdb
+C:\Proffy\server\Proffy.EmailMicroservice.Application\obj\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.genruntimeconfig.cache
+C:\Proffy\server\Proffy.EmailMicroservice.Application\obj\Debug\netcoreapp3.1\Proffy.EmailMicroservice.Application.csproj.CoreCompileInputs.cache

@@ -1,27 +1,37 @@
 import React, { SelectHTMLAttributes } from 'react'
+import CreatableSelect from 'react-select'
 
 import './styles.css'
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
     name: string;
     label: string;
-    options: Array<{
-        value: string;
-        label: string;
-    }>;
+    options: Array<{}>;
 }
 
-const Select: React.FC<SelectProps> = ({label, name, options, ...rest }) => {
+const customStyles = {
+    control: (styles: any) => ({ 
+        ...styles, 
+        borderRadius: 7,
+        backgroundColor: '#F8F8FC',
+        height: '55px',
+        borderColor: '#E6E6F0',
+        boxShadow: '#E6E6F0',
+        '&:hover': {
+            border: '#E6E6F0'
+        },
+    })
+}
+
+const Select: React.FC<SelectProps> = ({label, name, options }) => {
     return (
         <div className="select-block">
             <label htmlFor={name}>{label}</label>
-            <select value="" id={name} {...rest}>
-                <option value="" disabled hidden>Selecione uma opção</option>
-
-                {options.map(option => {
-                    return <option key={option.value} value={option.value}>{option.label}</option>
-                })}
-            </select>
+            <CreatableSelect
+                placeholder="Pesquise"
+                styles={customStyles}
+                options={options}
+            />
         </div>
     )
 }

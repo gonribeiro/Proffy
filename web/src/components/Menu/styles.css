@@ -1,0 +1,40 @@
+.buttons-menu-container button {
+    width: 100%;
+    height: 5.9rem;
+    background: var(--color-background);
+    color: var(--color-text-title);
+    border: 0;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font: 700 1.6rem Archivo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    margin-top: 3.2rem;
+}
+
+.buttons-menu-container button:hover {
+    background: var(--color-line-in-white);
+}
+
+.buttons-menu-container a {
+    text-decoration: none;
+}
+
+@media (min-width: 700px) {
+    .buttons-menu-container {
+        margin-left: 2rem;
+        width: 25.2rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 16px;
+        position: absolute;
+        bottom: 0px;
+    }
+
+    .buttons-menu-container button {
+        width: 25.2rem;
+    }
+}
