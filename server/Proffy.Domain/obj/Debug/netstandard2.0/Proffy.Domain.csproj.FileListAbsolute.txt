@@ -1,0 +1,9 @@
+C:\Proffy\Proffy\Proffy.Domain\bin\Debug\netstandard2.0\Proffy.Domain.deps.json
+C:\Proffy\Proffy\Proffy.Domain\bin\Debug\netstandard2.0\Proffy.Domain.dll
+C:\Proffy\Proffy\Proffy.Domain\obj\Debug\netstandard2.0\Proffy.Domain.csprojAssemblyReference.cache
+C:\Proffy\Proffy\Proffy.Domain\obj\Debug\netstandard2.0\Proffy.Domain.AssemblyInfoInputs.cache
+C:\Proffy\Proffy\Proffy.Domain\obj\Debug\netstandard2.0\Proffy.Domain.AssemblyInfo.cs
+C:\Proffy\Proffy\Proffy.Domain\bin\Debug\netstandard2.0\Proffy.Domain.pdb
+C:\Proffy\Proffy\Proffy.Domain\obj\Debug\netstandard2.0\Proffy.Domain.csproj.CoreCompileInputs.cache
+C:\Proffy\Proffy\Proffy.Domain\obj\Debug\netstandard2.0\Proffy.Domain.dll
+C:\Proffy\Proffy\Proffy.Domain\obj\Debug\netstandard2.0\Proffy.Domain.pdb
