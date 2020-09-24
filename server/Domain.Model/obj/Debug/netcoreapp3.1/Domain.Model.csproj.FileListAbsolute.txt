@@ -1,0 +1,9 @@
+C:\Proffy_\server\Domain.Model\bin\Debug\netcoreapp3.1\Domain.Model.deps.json
+C:\Proffy_\server\Domain.Model\bin\Debug\netcoreapp3.1\Domain.Model.dll
+C:\Proffy_\server\Domain.Model\bin\Debug\netcoreapp3.1\Domain.Model.pdb
+C:\Proffy_\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.csprojAssemblyReference.cache
+C:\Proffy_\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.AssemblyInfoInputs.cache
+C:\Proffy_\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.AssemblyInfo.cs
+C:\Proffy_\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.csproj.CoreCompileInputs.cache
+C:\Proffy_\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.dll
+C:\Proffy_\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.pdb
