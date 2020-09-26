@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XPeEu6v16Wl+LzLotD+XDAIcOP9jrTptbDIwXovfge6Bfil2HEGtr3dFbPzlt63rDxP9anRp7NuTyVGlRyhalA==",
+  "dgSpecHash": "l1cv0Bpme33gBO8ZMWeIxkcPNgJ8D7Ed/BuwoqLvl+PQPik9phWKdN4bStNdkNDkY6xnQzmaMJl2Xc497i5Gug==",
   "success": true,
-  "projectFilePath": "C:\\Proffy_\\server\\Application.WebApi\\Application.WebApi.csproj",
+  "projectFilePath": "C:\\Proffy\\server\\Application.WebApi\\Application.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj": {}
+    "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj": {}
   },
   "projects": {
-    "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj": {
+    "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj",
+        "projectUniqueName": "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj",
         "projectName": "Domain.Model",
-        "projectPath": "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj",
+        "projectPath": "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj",
         "packagesPath": "C:\\Users\\Tiago\\.nuget\\packages\\",
-        "outputPath": "C:\\Proffy_\\server\\Domain.Model\\obj\\",
+        "outputPath": "C:\\Proffy\\server\\Domain.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

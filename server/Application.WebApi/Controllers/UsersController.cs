@@ -1,4 +1,5 @@
-﻿using Domain.Model.AggregatesModel.UserAggregate;
+﻿using Application.WebApi.Services;
+using Domain.Model.AggregatesModel.UserAggregate;
 using Infrastructure.Data.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,35 @@ namespace Application.WebApi.Controllers
             _context = context;
         }
 
+        /*[HttpPost("login")]
+        public async Task<ActionResult<dynamic>> Login(User credentials)
+        {
+            try
+            {
+                User user = _context.Users.First(user => user.Email.Equals(credentials.Email));
+
+                if (user.Password.Equals(PasswordService.Cryptography(credentials.Password)))
+                {
+                    var token = TokenService.GenerateToken();
+
+                    return new
+                    {
+                        id = user.Id,
+                        name = user.Name,
+                        token = token
+                    };
+                }
+                else
+                {
+                    return NotFound("Usuário ou senha incorreto.");
+                }
+            }
+            catch
+            {
+                return NotFound("Usuário ou senha incorreto.");
+            }
+        }*/
+
         // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
@@ -35,8 +65,10 @@ namespace Application.WebApi.Controllers
 
             if (user == null)
             {
-                return NotFound();
+                return NotFound("Usuário não encontrado O.o. Por favor, tente novamente ou faça uma conta.");
             }
+
+            user.Password = "";
 
             return user;
         }
@@ -49,10 +81,20 @@ namespace Application.WebApi.Controllers
         {
             if (id != user.Id)
             {
-                return BadRequest();
+                return BadRequest("Não foi possível atualizar. Por favor, faça login novamente.");
             }
 
-            _context.Entry(user).State = EntityState.Modified;
+            var put = _context.Users.Find(user.Id);
+
+            if (user.Password != string.Empty)
+            {
+                put.Password = PasswordService.Cryptography(user.Password);
+            }
+
+            put.Photo = user.Photo;
+            // put.Whatsapp = user.Whatsapp;
+            // put.Facebook = user.Facebook;
+            // put.Bio = user.Bio;
 
             try
             {
@@ -60,17 +102,10 @@ namespace Application.WebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound("Não foi possível salvar as informações.");
             }
 
-            return NoContent();
+            return StatusCode(201, new { message = "Informações atualizadas com sucesso!" });
         }
 
         // POST: api/Users
@@ -79,14 +114,43 @@ namespace Application.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            /*
+             * TODO
+             * Ver se há forma melhor para verificar se conta já existe
+             * 
+             * Try Catch impede retornar erro do C# quando não encontra objeto, 
+             * que interrompe o fluxo desejado
+             */
+            try
+            {
+                var userExists = _context.Users.First(u => u.Email.Equals(user.Email));
+
+                if (userExists != null)
+                {
+                    return BadRequest("E-mail já cadastrado. Esqueceu a senha?");
+                }
+            }
+            catch
+            { }
+
+            user.Password = PasswordService.Cryptography(user.Password);
+
+            user.CreatedAt = DateTime.Now;
+
+            user.Actived = false;
+
             _context.Users.Add(user);
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            // Envia email ao usuario informando conta criada.
+            // MessageService.SendEmail(user.Email);
+
+            return StatusCode(201, new { message = "Conta criada com sucesso! Você pode fazer login ^^" });
         }
 
         // DELETE: api/Users/5
-        [HttpDelete("{id}")]
+        /*[HttpDelete("{id}")]
         public async Task<ActionResult<User>> DeleteUser(Guid id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -104,6 +168,6 @@ namespace Application.WebApi.Controllers
         private bool UserExists(Guid id)
         {
             return _context.Users.Any(e => e.Id == id);
-        }
+        }*/
     }
 }

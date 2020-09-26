@@ -8846,11 +8846,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proffy_\\server\\Application.WebApi\\Application.WebApi.csproj",
+      "projectUniqueName": "C:\\Proffy\\server\\Application.WebApi\\Application.WebApi.csproj",
       "projectName": "Application.WebApi",
-      "projectPath": "C:\\Proffy_\\server\\Application.WebApi\\Application.WebApi.csproj",
+      "projectPath": "C:\\Proffy\\server\\Application.WebApi\\Application.WebApi.csproj",
       "packagesPath": "C:\\Users\\Tiago\\.nuget\\packages\\",
-      "outputPath": "C:\\Proffy_\\server\\Application.WebApi\\obj\\",
+      "outputPath": "C:\\Proffy\\server\\Application.WebApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8869,8 +8869,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Proffy_\\server\\Infrastructure.Data\\Infrastructure.Data.csproj": {
-              "projectPath": "C:\\Proffy_\\server\\Infrastructure.Data\\Infrastructure.Data.csproj"
+            "C:\\Proffy\\server\\Infrastructure.Data\\Infrastructure.Data.csproj": {
+              "projectPath": "C:\\Proffy\\server\\Infrastructure.Data\\Infrastructure.Data.csproj"
             }
           }
         }

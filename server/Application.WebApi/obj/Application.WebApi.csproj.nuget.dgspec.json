@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proffy_\\server\\Application.WebApi\\Application.WebApi.csproj": {}
+    "C:\\Proffy\\server\\Application.WebApi\\Application.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Proffy_\\server\\Application.WebApi\\Application.WebApi.csproj": {
+    "C:\\Proffy\\server\\Application.WebApi\\Application.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proffy_\\server\\Application.WebApi\\Application.WebApi.csproj",
+        "projectUniqueName": "C:\\Proffy\\server\\Application.WebApi\\Application.WebApi.csproj",
         "projectName": "Application.WebApi",
-        "projectPath": "C:\\Proffy_\\server\\Application.WebApi\\Application.WebApi.csproj",
+        "projectPath": "C:\\Proffy\\server\\Application.WebApi\\Application.WebApi.csproj",
         "packagesPath": "C:\\Users\\Tiago\\.nuget\\packages\\",
-        "outputPath": "C:\\Proffy_\\server\\Application.WebApi\\obj\\",
+        "outputPath": "C:\\Proffy\\server\\Application.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Proffy_\\server\\Infrastructure.Data\\Infrastructure.Data.csproj": {
-                "projectPath": "C:\\Proffy_\\server\\Infrastructure.Data\\Infrastructure.Data.csproj"
+              "C:\\Proffy\\server\\Infrastructure.Data\\Infrastructure.Data.csproj": {
+                "projectPath": "C:\\Proffy\\server\\Infrastructure.Data\\Infrastructure.Data.csproj"
               }
             }
           }
@@ -86,14 +86,14 @@
         }
       }
     },
-    "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj": {
+    "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj",
+        "projectUniqueName": "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj",
         "projectName": "Domain.Model",
-        "projectPath": "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj",
+        "projectPath": "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj",
         "packagesPath": "C:\\Users\\Tiago\\.nuget\\packages\\",
-        "outputPath": "C:\\Proffy_\\server\\Domain.Model\\obj\\",
+        "outputPath": "C:\\Proffy\\server\\Domain.Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -141,14 +141,14 @@
         }
       }
     },
-    "C:\\Proffy_\\server\\Infrastructure.Data\\Infrastructure.Data.csproj": {
+    "C:\\Proffy\\server\\Infrastructure.Data\\Infrastructure.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proffy_\\server\\Infrastructure.Data\\Infrastructure.Data.csproj",
+        "projectUniqueName": "C:\\Proffy\\server\\Infrastructure.Data\\Infrastructure.Data.csproj",
         "projectName": "Infrastructure.Data",
-        "projectPath": "C:\\Proffy_\\server\\Infrastructure.Data\\Infrastructure.Data.csproj",
+        "projectPath": "C:\\Proffy\\server\\Infrastructure.Data\\Infrastructure.Data.csproj",
         "packagesPath": "C:\\Users\\Tiago\\.nuget\\packages\\",
-        "outputPath": "C:\\Proffy_\\server\\Infrastructure.Data\\obj\\",
+        "outputPath": "C:\\Proffy\\server\\Infrastructure.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -167,8 +167,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj": {
-                "projectPath": "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj"
+              "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj": {
+                "projectPath": "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj"
               }
             }
           }

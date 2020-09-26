@@ -7,3 +7,12 @@ C:\Proffy_\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.AssemblyInfo
 C:\Proffy_\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.csproj.CoreCompileInputs.cache
 C:\Proffy_\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.dll
 C:\Proffy_\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.pdb
+C:\Proffy\server\Domain.Model\bin\Debug\netcoreapp3.1\Domain.Model.deps.json
+C:\Proffy\server\Domain.Model\bin\Debug\netcoreapp3.1\Domain.Model.dll
+C:\Proffy\server\Domain.Model\bin\Debug\netcoreapp3.1\Domain.Model.pdb
+C:\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.csprojAssemblyReference.cache
+C:\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.AssemblyInfoInputs.cache
+C:\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.AssemblyInfo.cs
+C:\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.csproj.CoreCompileInputs.cache
+C:\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.dll
+C:\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.pdb

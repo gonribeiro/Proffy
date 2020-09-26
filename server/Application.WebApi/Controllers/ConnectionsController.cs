@@ -22,56 +22,15 @@ namespace Application.WebApi.Controllers
         }
 
         // GET: api/Connections
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Connection>>> GetConnections()
+        [HttpGet("Total")]
+        public ActionResult<int> Get()
         {
-            return await _context.Connections.ToListAsync();
-        }
+            var query = (from c in _context.Connections.ToList()
+                         select c).ToList();
 
-        // GET: api/Connections/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Connection>> GetConnection(Guid id)
-        {
-            var connection = await _context.Connections.FindAsync(id);
+            var total = query.Count();
 
-            if (connection == null)
-            {
-                return NotFound();
-            }
-
-            return connection;
-        }
-
-        // PUT: api/Connections/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutConnection(Guid id, Connection connection)
-        {
-            if (id != connection.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(connection).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ConnectionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return total;
         }
 
         // POST: api/Connections
@@ -84,27 +43,6 @@ namespace Application.WebApi.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetConnection", new { id = connection.Id }, connection);
-        }
-
-        // DELETE: api/Connections/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Connection>> DeleteConnection(Guid id)
-        {
-            var connection = await _context.Connections.FindAsync(id);
-            if (connection == null)
-            {
-                return NotFound();
-            }
-
-            _context.Connections.Remove(connection);
-            await _context.SaveChangesAsync();
-
-            return connection;
-        }
-
-        private bool ConnectionExists(Guid id)
-        {
-            return _context.Connections.Any(e => e.Id == id);
         }
     }
 }

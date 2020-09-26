@@ -5689,11 +5689,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proffy_\\server\\Infrastructure.Data\\Infrastructure.Data.csproj",
+      "projectUniqueName": "C:\\Proffy\\server\\Infrastructure.Data\\Infrastructure.Data.csproj",
       "projectName": "Infrastructure.Data",
-      "projectPath": "C:\\Proffy_\\server\\Infrastructure.Data\\Infrastructure.Data.csproj",
+      "projectPath": "C:\\Proffy\\server\\Infrastructure.Data\\Infrastructure.Data.csproj",
       "packagesPath": "C:\\Users\\Tiago\\.nuget\\packages\\",
-      "outputPath": "C:\\Proffy_\\server\\Infrastructure.Data\\obj\\",
+      "outputPath": "C:\\Proffy\\server\\Infrastructure.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5712,8 +5712,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj": {
-              "projectPath": "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj"
+            "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj": {
+              "projectPath": "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qORRRIUXNk1EIZ302P+SWo8IwR61T/gm39fXkERs1vrGEl/8X81bQGNC/ge1RVWadYKX6SaW5vqtnsOE/xNVAQ==",
+  "dgSpecHash": "xo/CXGQuGTqM0veinLE0Pj7sPzBvRBqmUVKY4ZoCy1J7UmSaYEqb0C+lf2rdge2ZTo59Na+CiHi2UFGAvKE3Qw==",
   "success": true,
-  "projectFilePath": "C:\\Proffy_\\server\\Domain.Model\\Domain.Model.csproj",
+  "projectFilePath": "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
