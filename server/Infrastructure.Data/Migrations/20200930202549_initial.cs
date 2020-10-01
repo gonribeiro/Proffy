@@ -29,7 +29,7 @@ namespace Infrastructure.Data.Migrations
                     Password = table.Column<string>(maxLength: 40, nullable: true),
                     Name = table.Column<string>(maxLength: 120, nullable: true),
                     Photo = table.Column<string>(maxLength: 255, nullable: true),
-                    CreatedAt = table.Column<DateTime>(maxLength: 13, nullable: false),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
                     Actived = table.Column<bool>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
                     Whatsapp = table.Column<string>(nullable: true),

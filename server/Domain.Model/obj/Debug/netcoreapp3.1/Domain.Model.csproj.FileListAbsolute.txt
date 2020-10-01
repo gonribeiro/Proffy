@@ -16,3 +16,12 @@ C:\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.AssemblyInfo.
 C:\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.csproj.CoreCompileInputs.cache
 C:\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.dll
 C:\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.pdb
+D:\Dev\Proffy\server\Domain.Model\bin\Debug\netcoreapp3.1\Domain.Model.deps.json
+D:\Dev\Proffy\server\Domain.Model\bin\Debug\netcoreapp3.1\Domain.Model.dll
+D:\Dev\Proffy\server\Domain.Model\bin\Debug\netcoreapp3.1\Domain.Model.pdb
+D:\Dev\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.csprojAssemblyReference.cache
+D:\Dev\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.AssemblyInfoInputs.cache
+D:\Dev\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.AssemblyInfo.cs
+D:\Dev\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.csproj.CoreCompileInputs.cache
+D:\Dev\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.dll
+D:\Dev\Proffy\server\Domain.Model\obj\Debug\netcoreapp3.1\Domain.Model.pdb

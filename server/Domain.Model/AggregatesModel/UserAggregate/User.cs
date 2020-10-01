@@ -14,7 +14,6 @@ namespace Domain.Model.AggregatesModel.UserAggregate
         public string Name { get; set; }
         [StringLength(255)]
         public string Photo { get; set; }
-        [StringLength(13)]
         public DateTime CreatedAt { get; set; }
         public bool Actived { get; set; }
     }

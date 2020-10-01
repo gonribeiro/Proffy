@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj": {}
+    "D:\\Dev\\Proffy\\server\\Domain.Model\\Domain.Model.csproj": {}
   },
   "projects": {
-    "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj": {
+    "D:\\Dev\\Proffy\\server\\Domain.Model\\Domain.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj",
+        "projectUniqueName": "D:\\Dev\\Proffy\\server\\Domain.Model\\Domain.Model.csproj",
         "projectName": "Domain.Model",
-        "projectPath": "C:\\Proffy\\server\\Domain.Model\\Domain.Model.csproj",
-        "packagesPath": "C:\\Users\\Tiago\\.nuget\\packages\\",
-        "outputPath": "C:\\Proffy\\server\\Domain.Model\\obj\\",
+        "projectPath": "D:\\Dev\\Proffy\\server\\Domain.Model\\Domain.Model.csproj",
+        "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
+        "outputPath": "D:\\Dev\\Proffy\\server\\Domain.Model\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Tiago\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

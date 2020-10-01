@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")] 
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace Application.WebApi.Controllers
             _context = context;
         }
 
-        /*[HttpPost("login")]
+        [HttpPost("login")]
         public async Task<ActionResult<dynamic>> Login(User credentials)
         {
             try
@@ -48,7 +48,7 @@ namespace Application.WebApi.Controllers
             {
                 return NotFound("Usuário ou senha incorreto.");
             }
-        }*/
+        }
 
         // GET: api/Users
         [HttpGet]
@@ -127,7 +127,7 @@ namespace Application.WebApi.Controllers
 
                 if (userExists != null)
                 {
-                    return BadRequest("E-mail já cadastrado. Esqueceu a senha?");
+                    return BadRequest(new { message = "E-mail já cadastrado. Esqueceu a senha?" });
                 }
             }
             catch
@@ -148,26 +148,5 @@ namespace Application.WebApi.Controllers
 
             return StatusCode(201, new { message = "Conta criada com sucesso! Você pode fazer login ^^" });
         }
-
-        // DELETE: api/Users/5
-        /*[HttpDelete("{id}")]
-        public async Task<ActionResult<User>> DeleteUser(Guid id)
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-
-            return user;
-        }
-
-        private bool UserExists(Guid id)
-        {
-            return _context.Users.Any(e => e.Id == id);
-        }*/
     }
 }
