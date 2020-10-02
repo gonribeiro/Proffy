@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Model.AggregatesModel.UserAggregate;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -19,5 +20,7 @@ namespace Domain.Model.AggregatesModel.CourseAggregate
         public bool Actived { get; set; }
         public Course Course { get; set; }
         public ICollection<Schedule> Schedules { get; set; }
+        public ICollection<User> Users { get; set; }
+        public ICollection<Course> Courses { get; set; }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Domain.Model.AggregatesModel.CourseAggregate;
+using Domain.Model.AggregatesModel.RateAggregate;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Model.AggregatesModel.UserAggregate
@@ -16,5 +19,10 @@ namespace Domain.Model.AggregatesModel.UserAggregate
         public string Photo { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool Actived { get; set; }
+        public string Whatsapp { get; set; }
+        [StringLength(255)]
+        public string Facebook { get; set; }
+        public string Bio { get; set; }
+        public ICollection<Connection> Connections { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace Infrastructure.Data.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Connection>()
-                .HasOne(u => u.Teacher)
+                .HasOne(u => u.User)
                 .WithMany(t => t.Connections);
 
             modelBuilder.Entity<TeacherCourse>()
@@ -32,6 +32,9 @@ namespace Infrastructure.Data.Contexts
             modelBuilder.Entity<Schedule>()
                 .HasOne(t => t.TeacherCourse)
                 .WithMany(s => s.Schedules);
+
+            modelBuilder.Entity<TeacherCourse>()
+               .HasKey(c => new { c.CourseId, c.UserId });
         }
     }
 }

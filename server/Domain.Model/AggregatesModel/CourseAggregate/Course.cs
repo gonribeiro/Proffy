@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Model.AggregatesModel.UserAggregate;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 

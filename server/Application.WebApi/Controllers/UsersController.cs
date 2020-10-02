@@ -58,7 +58,9 @@ namespace Application.WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users
+                .Include(c => c.Connections)
+                .ToListAsync();
         }
 
         // GET: api/Users/5
@@ -96,9 +98,9 @@ namespace Application.WebApi.Controllers
             }
 
             put.Photo = user.Photo;
-            // put.Whatsapp = user.Whatsapp;
-            // put.Facebook = user.Facebook;
-            // put.Bio = user.Bio;
+            put.Whatsapp = user.Whatsapp;
+            put.Facebook = user.Facebook;
+            put.Bio = user.Bio;
 
             try
             {
