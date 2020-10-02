@@ -475,6 +475,9 @@ D:\Dev\Proffy\server\Application.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspN
 D:\Dev\Proffy\server\Application.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Dev\Proffy\server\Application.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Dev\Proffy\server\Application.WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Dev\Proffy\server\Application.WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\Dev\Proffy\server\Application.WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Dev\Proffy\server\Application.WebApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 D:\Dev\Proffy\server\Application.WebApi\obj\Debug\netcoreapp3.1\Application.WebApi.csproj.CoreCompileInputs.cache
 D:\Dev\Proffy\server\Application.WebApi\obj\Debug\netcoreapp3.1\Application.WebApi.MvcApplicationPartsAssemblyInfo.cs
 D:\Dev\Proffy\server\Application.WebApi\obj\Debug\netcoreapp3.1\Application.WebApi.MvcApplicationPartsAssemblyInfo.cache

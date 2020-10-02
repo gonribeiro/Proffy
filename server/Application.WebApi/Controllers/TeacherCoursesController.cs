@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Domain.Model.AggregatesModel.CourseAggregate;
+using Infrastructure.Data.Contexts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Domain.Model.AggregatesModel.CourseAggregate;
-using Infrastructure.Data.Contexts;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Application.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class TeacherCoursesController : ControllerBase
     {
@@ -21,25 +21,16 @@ namespace Application.WebApi.Controllers
             _context = context;
         }
 
-        // GET: api/TeacherCourses
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<TeacherCourse>>> GetTeacherCourses()
-        {
-            return await _context.TeacherCourses.ToListAsync();
-        }
-
         // GET: api/TeacherCourses/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<TeacherCourse>> GetTeacherCourse(Guid id)
+        // Returns all Courses of the user / teacher
+        [HttpGet("{userId}")]
+        public IQueryable<TeacherCourse> Get(Guid userId)
         {
-            var teacherCourse = await _context.TeacherCourses.FindAsync(id);
+            var TeacherCourse = _context.TeacherCourses
+                         .Where(t => t.UserId == userId)
+                         .Select(t => t);
 
-            if (teacherCourse == null)
-            {
-                return NotFound();
-            }
-
-            return teacherCourse;
+            return TeacherCourse;
         }
 
         // PUT: api/TeacherCourses/5
@@ -50,7 +41,7 @@ namespace Application.WebApi.Controllers
         {
             if (id != teacherCourse.Id)
             {
-                return BadRequest();
+                return BadRequest(new { message = "Não foi possível atualizar. Por favor, faça login novamente." });
             }
 
             _context.Entry(teacherCourse).State = EntityState.Modified;
@@ -59,19 +50,12 @@ namespace Application.WebApi.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch
             {
-                if (!TeacherCourseExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound(new { message = "Ops... Ocorreu algum erro e não foi possível atualizar a informação." });
             }
 
-            return NoContent();
+            return StatusCode(201, new { message = "Aula atualizada com sucesso!" });
         }
 
         // POST: api/TeacherCourses
@@ -80,31 +64,12 @@ namespace Application.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<TeacherCourse>> PostTeacherCourse(TeacherCourse teacherCourse)
         {
+            teacherCourse.Actived = false;
+
             _context.TeacherCourses.Add(teacherCourse);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTeacherCourse", new { id = teacherCourse.Id }, teacherCourse);
-        }
-
-        // DELETE: api/TeacherCourses/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<TeacherCourse>> DeleteTeacherCourse(Guid id)
-        {
-            var teacherCourse = await _context.TeacherCourses.FindAsync(id);
-            if (teacherCourse == null)
-            {
-                return NotFound();
-            }
-
-            _context.TeacherCourses.Remove(teacherCourse);
-            await _context.SaveChangesAsync();
-
-            return teacherCourse;
-        }
-
-        private bool TeacherCourseExists(Guid id)
-        {
-            return _context.TeacherCourses.Any(e => e.Id == id);
+            return StatusCode(201, new { teacherCourse.Id, message = "Uhul! Agora cadastre seu horário disponível para a aula!" });
         }
     }
 }

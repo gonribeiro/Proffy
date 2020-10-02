@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Domain.Model.AggregatesModel.RateAggregate;
+using Infrastructure.Data.Contexts;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Domain.Model.AggregatesModel.RateAggregate;
-using Infrastructure.Data.Contexts;
 
 namespace Application.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class ConnectionsController : ControllerBase
     {

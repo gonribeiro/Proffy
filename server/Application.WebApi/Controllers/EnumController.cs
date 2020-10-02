@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Application.WebApi.Controllers
 {
+    [Route("api/v1/[controller]")]
+    [ApiController]
     public class EnumController : ControllerBase
     {
         [HttpGet]

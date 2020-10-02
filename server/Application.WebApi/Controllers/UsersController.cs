@@ -1,6 +1,7 @@
 ﻿using Application.WebApi.Services;
 using Domain.Model.AggregatesModel.UserAggregate;
 using Infrastructure.Data.Contexts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace Application.WebApi.Controllers
 {
-    [Route("api/v1/[controller]")] 
+    [Authorize]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -21,6 +23,7 @@ namespace Application.WebApi.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<dynamic>> Login(User credentials)
         {
@@ -41,16 +44,17 @@ namespace Application.WebApi.Controllers
                 }
                 else
                 {
-                    return NotFound("Usuário ou senha incorreto.");
+                    return NotFound(new { message = "Usuário ou senha incorreto." });
                 }
             }
             catch
             {
-                return NotFound("Usuário ou senha incorreto.");
+                return NotFound(new { message = "Usuário ou senha incorreto." });
             }
         }
 
         // GET: api/Users
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
@@ -65,7 +69,7 @@ namespace Application.WebApi.Controllers
 
             if (user == null)
             {
-                return NotFound("Usuário não encontrado O.o. Por favor, tente novamente ou faça uma conta.");
+                return NotFound(new { message = "Usuário não encontrado O.o. Por favor, tente novamente ou faça uma conta." });
             }
 
             user.Password = "";
@@ -81,7 +85,7 @@ namespace Application.WebApi.Controllers
         {
             if (id != user.Id)
             {
-                return BadRequest("Não foi possível atualizar. Por favor, faça login novamente.");
+                return BadRequest(new { message = "Não foi possível atualizar. Por favor, faça login novamente."});
             }
 
             var put = _context.Users.Find(user.Id);
@@ -102,7 +106,7 @@ namespace Application.WebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                return NotFound("Não foi possível salvar as informações.");
+                return NotFound(new { message = "Não foi possível salvar as informações." });
             }
 
             return StatusCode(201, new { message = "Informações atualizadas com sucesso!" });
@@ -111,6 +115,7 @@ namespace Application.WebApi.Controllers
         // POST: api/Users
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
@@ -144,7 +149,16 @@ namespace Application.WebApi.Controllers
             await _context.SaveChangesAsync();
 
             // Envia email ao usuario informando conta criada.
-            // MessageService.SendEmail(user.Email);
+            /*
+             * TODO
+             * Ver se há forma melhor para validar se email foi enviado
+             */
+            try
+            {
+                EmailService.SendEmail(user.Email);
+            }
+            catch
+            { }
 
             return StatusCode(201, new { message = "Conta criada com sucesso! Você pode fazer login ^^" });
         }

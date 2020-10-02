@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Domain.Model.AggregatesModel.CourseAggregate;
+using Infrastructure.Data.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Domain.Model.AggregatesModel.CourseAggregate;
-using Infrastructure.Data.Contexts;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Application.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class CoursesController : ControllerBase
     {

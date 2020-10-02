@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Domain.Model.AggregatesModel.CourseAggregate;
+using Infrastructure.Data.Contexts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Domain.Model.AggregatesModel.CourseAggregate;
-using Infrastructure.Data.Contexts;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Application.WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class SchedulesController : ControllerBase
     {
@@ -21,23 +21,13 @@ namespace Application.WebApi.Controllers
             _context = context;
         }
 
-        // GET: api/Schedules
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Schedule>>> GetSchedules()
-        {
-            return await _context.Schedules.ToListAsync();
-        }
-
         // GET: api/Schedules/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Schedule>> GetSchedule(Guid id)
+        public IQueryable<Schedule> Get(Guid teacherCourseId)
         {
-            var schedule = await _context.Schedules.FindAsync(id);
-
-            if (schedule == null)
-            {
-                return NotFound();
-            }
+            var schedule = _context.Schedules
+                         .Where(t => t.TeacherCourseId == teacherCourseId)
+                         .Select(s => s);
 
             return schedule;
         }
@@ -50,7 +40,7 @@ namespace Application.WebApi.Controllers
         {
             if (id != schedule.Id)
             {
-                return BadRequest();
+                return BadRequest(new { message = "Não foi possível atualizar. Por favor, faça login novamente." });
             }
 
             _context.Entry(schedule).State = EntityState.Modified;
@@ -61,17 +51,10 @@ namespace Application.WebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ScheduleExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound(new { message = "Ops... Ocorreu algum erro e não foi possível atualizar a informação."});
             }
 
-            return NoContent();
+            return StatusCode(201, new { message = "Horário atualizado com sucesso!" });
         }
 
         // POST: api/Schedules
@@ -83,28 +66,7 @@ namespace Application.WebApi.Controllers
             _context.Schedules.Add(schedule);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSchedule", new { id = schedule.Id }, schedule);
-        }
-
-        // DELETE: api/Schedules/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Schedule>> DeleteSchedule(Guid id)
-        {
-            var schedule = await _context.Schedules.FindAsync(id);
-            if (schedule == null)
-            {
-                return NotFound();
-            }
-
-            _context.Schedules.Remove(schedule);
-            await _context.SaveChangesAsync();
-
-            return schedule;
-        }
-
-        private bool ScheduleExists(Guid id)
-        {
-            return _context.Schedules.Any(e => e.Id == id);
+            return StatusCode(201, new { schedule.Id, message = "Horário cadastrado com sucesso!" });
         }
     }
 }
