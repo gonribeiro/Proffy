@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.WebApi.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/v1/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -71,7 +71,13 @@ namespace Application.WebApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(Guid id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users
+                .Include(c => c.Connections)
+                .Include(tc => tc.TeacherCourses)
+                .ThenInclude(co => co.Course)
+                .Include(tc => tc.TeacherCourses)
+                .ThenInclude(s => s.Schedules)
+                .FirstOrDefaultAsync(i => i.Id == id);
 
             if (user == null)
             {

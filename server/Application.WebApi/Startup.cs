@@ -54,7 +54,7 @@ namespace Application.WebApi
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "User API",
+                    Title = "Proffy API",
                     Description = "",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact

@@ -21,18 +21,6 @@ namespace Application.WebApi.Controllers
             _context = context;
         }
 
-        // GET: api/TeacherCourses/5
-        // Returns all Courses of the user / teacher
-        [HttpGet("{userId}")]
-        public IQueryable<TeacherCourse> Get(Guid userId)
-        {
-            var TeacherCourse = _context.TeacherCourses
-                         .Where(t => t.UserId == userId)
-                         .Select(t => t);
-
-            return TeacherCourse;
-        }
-
         // PUT: api/TeacherCourses/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.

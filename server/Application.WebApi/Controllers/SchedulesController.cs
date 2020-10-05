@@ -21,17 +21,6 @@ namespace Application.WebApi.Controllers
             _context = context;
         }
 
-        // GET: api/Schedules/5
-        [HttpGet("{id}")]
-        public IQueryable<Schedule> Get(Guid teacherCourseId)
-        {
-            var schedule = _context.Schedules
-                         .Where(t => t.TeacherCourseId == teacherCourseId)
-                         .Select(s => s);
-
-            return schedule;
-        }
-
         // PUT: api/Schedules/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
