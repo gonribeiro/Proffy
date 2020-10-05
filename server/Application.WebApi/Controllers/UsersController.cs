@@ -23,6 +23,20 @@ namespace Application.WebApi.Controllers
             _context = context;
         }
 
+        // GET: api/Users
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        {
+            return await _context.Users
+                .Include(c => c.Connections)
+                .Include(tc => tc.TeacherCourses)
+                .ThenInclude(co => co.Course)
+                .Include(tc => tc.TeacherCourses)
+                .ThenInclude(s => s.Schedules)
+                .ToListAsync();
+        }
+
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<dynamic>> Login(User credentials)
@@ -51,16 +65,6 @@ namespace Application.WebApi.Controllers
             {
                 return NotFound(new { message = "Usuário ou senha incorreto." });
             }
-        }
-
-        // GET: api/Users
-        [AllowAnonymous]
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-        {
-            return await _context.Users
-                .Include(c => c.Connections)
-                .ToListAsync();
         }
 
         // GET: api/Users/5
@@ -151,10 +155,7 @@ namespace Application.WebApi.Controllers
             await _context.SaveChangesAsync();
 
             // Envia email ao usuario informando conta criada.
-            /*
-             * TODO
-             * Ver se há forma melhor para validar se email foi enviado
-             */
+            // TODO: Criar mock
             try
             {
                 EmailService.SendEmail(user.Email);

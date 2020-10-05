@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ProffyContext))]
-    [Migration("20201002205710_Initial")]
+    [Migration("20201005180955_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,15 +35,7 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<Guid?>("TeacherCourseCourseId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("TeacherCourseUserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TeacherCourseCourseId", "TeacherCourseUserId");
 
                     b.ToTable("Courses");
                 });
@@ -57,13 +49,7 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("From")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("TeacherCourseCourseId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("TeacherCourseId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("TeacherCourseUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("To")
@@ -74,17 +60,15 @@ namespace Infrastructure.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeacherCourseCourseId", "TeacherCourseUserId");
+                    b.HasIndex("TeacherCourseId");
 
                     b.ToTable("Schedules");
                 });
 
             modelBuilder.Entity("Domain.Model.AggregatesModel.CourseAggregate.TeacherCourse", b =>
                 {
-                    b.Property<Guid>("CourseId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Actived")
@@ -95,10 +79,17 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(7)")
                         .HasMaxLength(7);
 
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("CourseId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("CourseId", "UserId");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("TeacherCourses");
                 });
@@ -157,34 +148,21 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
-                    b.Property<Guid?>("TeacherCourseCourseId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("TeacherCourseUserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Whatsapp")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeacherCourseCourseId", "TeacherCourseUserId");
-
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Domain.Model.AggregatesModel.CourseAggregate.Course", b =>
-                {
-                    b.HasOne("Domain.Model.AggregatesModel.CourseAggregate.TeacherCourse", null)
-                        .WithMany("Courses")
-                        .HasForeignKey("TeacherCourseCourseId", "TeacherCourseUserId");
                 });
 
             modelBuilder.Entity("Domain.Model.AggregatesModel.CourseAggregate.Schedule", b =>
                 {
                     b.HasOne("Domain.Model.AggregatesModel.CourseAggregate.TeacherCourse", "TeacherCourse")
                         .WithMany("Schedules")
-                        .HasForeignKey("TeacherCourseCourseId", "TeacherCourseUserId");
+                        .HasForeignKey("TeacherCourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Model.AggregatesModel.CourseAggregate.TeacherCourse", b =>
@@ -192,6 +170,12 @@ namespace Infrastructure.Data.Migrations
                     b.HasOne("Domain.Model.AggregatesModel.CourseAggregate.Course", "Course")
                         .WithMany("TeacherCourses")
                         .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Model.AggregatesModel.UserAggregate.User", "User")
+                        .WithMany("TeacherCourses")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -203,13 +187,6 @@ namespace Infrastructure.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Domain.Model.AggregatesModel.UserAggregate.User", b =>
-                {
-                    b.HasOne("Domain.Model.AggregatesModel.CourseAggregate.TeacherCourse", null)
-                        .WithMany("Users")
-                        .HasForeignKey("TeacherCourseCourseId", "TeacherCourseUserId");
                 });
 #pragma warning restore 612, 618
         }

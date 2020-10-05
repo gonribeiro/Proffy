@@ -64,6 +64,8 @@ namespace Application.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<TeacherCourse>> PostTeacherCourse(TeacherCourse teacherCourse)
         {
+            // TODO: Não está gerando Guid sozinho. Tratar isso.
+            teacherCourse.Id = Guid.NewGuid();
             teacherCourse.Actived = false;
 
             _context.TeacherCourses.Add(teacherCourse);

@@ -3,16 +3,12 @@
 https://yuml.me/diagram/scruffy/class/draw
 
 ```
-[Teachers : Users]1-1..*[TeacherCourses]
+[Users]1-1..*[TeacherCourses]
 [Schedules]1..*-1[TeacherCourses]
-[Connections]1..*-1[Teachers : Users]
+[Connections]1..*-1[Users]
 [TeacherCourses]1-1[Courses]
 
-[Users; Id: Guid; Profile: Enum(Teacher, Admin); Email: Varchar(40); Password: Varchar(40); Name: Varchar(120); Photo: Varchar(255); CreatedAt: DateTime; Actived: Bool ]
-
-[Teachers : Users; Whatsapp: Varchar(13); Facebook: Varchar(255); Bio: Text; ]
-
-[Admins : Users; ]
+[Users; Id: Guid; Email: Varchar(40); Password: Varchar(40); Name: Varchar(120); Photo: Varchar(255); CreatedAt: DateTime; Actived: Bool; Whatsapp: Varchar(13); Facebook: Varchar(255); Bio: Text; ]
 
 [Connections; Id: Guid; UserId: Guid; CreatedAt: DateTime ]
 

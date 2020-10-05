@@ -24,5 +24,6 @@ namespace Domain.Model.AggregatesModel.UserAggregate
         public string Facebook { get; set; }
         public string Bio { get; set; }
         public ICollection<Connection> Connections { get; set; }
+        public ICollection<TeacherCourse> TeacherCourses { get; set; }
     }
 }

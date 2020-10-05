@@ -40,7 +40,7 @@ namespace Application.WebApi.Controllers
             _context.Connections.Add(connection);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetConnection", new { id = connection.Id }, connection);
+            return StatusCode(201, new { message = "Aluno clicou no whatsapp do professor!" });
         }
     }
 }

@@ -19,22 +19,18 @@ namespace Infrastructure.Data.Contexts
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=Proffy;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Connection>()
                 .HasOne(u => u.User)
                 .WithMany(t => t.Connections);
-
-            modelBuilder.Entity<TeacherCourse>()
-                .HasOne(c => c.Course)
-                .WithMany(t => t.TeacherCourses);
 
             modelBuilder.Entity<Schedule>()
                 .HasOne(t => t.TeacherCourse)
                 .WithMany(s => s.Schedules);
 
             modelBuilder.Entity<TeacherCourse>()
-               .HasKey(c => new { c.CourseId, c.UserId });
-        }
+               .HasKey(tc => new { tc.CourseId, tc.UserId });
+        }*/
     }
 }

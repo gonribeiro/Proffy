@@ -18,9 +18,8 @@ namespace Domain.Model.AggregatesModel.CourseAggregate
         public string Cost { get; set; }
         [Required]
         public bool Actived { get; set; }
-        public Course Course { get; set; }
         public ICollection<Schedule> Schedules { get; set; }
-        public ICollection<User> Users { get; set; }
-        public ICollection<Course> Courses { get; set; }
+        public User User { get; set; }
+        public Course Course { get; set; }
     }
 }
