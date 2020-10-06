@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import usersApi from '../../services/User'
+import proffyapi from '../../services/Proffy'
 import { logout, isLogged } from '../../services/Auth'
 
 import Input from '../../components/Input'
@@ -37,7 +37,7 @@ const TeacherInfo: React.FC<TeacherInfoProps> = () => {
         if (id !== '') {
             isLogged() // Check if user are logged in
 
-            usersApi.get('v1/users/'+id, {
+            proffyapi.get('v1/users/'+id, {
                 headers: {
                     Authorization: 'Bearer ' + proffyToken
             }}).then((response) => {
@@ -61,7 +61,7 @@ const TeacherInfo: React.FC<TeacherInfoProps> = () => {
         e.preventDefault()
 
         if (id === '') {
-            usersApi.post('v1/users', {
+            proffyapi.post('v1/users', {
                 email, 
                 password,
                 name,
@@ -77,7 +77,7 @@ const TeacherInfo: React.FC<TeacherInfoProps> = () => {
                 alert(error.response.data)
             })
         } else {
-            usersApi.put('v1/users/'+id, {
+            proffyapi.put('v1/users/'+id, {
                 id,
                 password,
                 photo,
