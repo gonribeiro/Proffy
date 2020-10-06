@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Application.WebApi.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/v1/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -25,8 +25,8 @@ namespace Application.WebApi.Controllers
 
         // GET: api/Users
         [AllowAnonymous]
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        [HttpGet("search/{courseId},{weekday},{from}")]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers(Guid courseId, int weekday, int from)
         {
             return await _context.Users
                 .Include(c => c.Connections)
@@ -34,6 +34,9 @@ namespace Application.WebApi.Controllers
                 .ThenInclude(co => co.Course)
                 .Include(tc => tc.TeacherCourses)
                 .ThenInclude(s => s.Schedules)
+                .Where(tc => tc.TeacherCourses.Any(p => p.CourseId == courseId))
+                .Where(tc => tc.TeacherCourses.Any(s => s.Schedules.Any(w => w.WeekDay == weekday)))
+                .Where(tc => tc.TeacherCourses.Any(s => s.Schedules.Any(f => f.From == from)))
                 .ToListAsync();
         }
 
@@ -77,7 +80,7 @@ namespace Application.WebApi.Controllers
                 .ThenInclude(co => co.Course)
                 .Include(tc => tc.TeacherCourses)
                 .ThenInclude(s => s.Schedules)
-                .FirstOrDefaultAsync(i => i.Id == id);
+                .FirstOrDefaultAsync(u => u.Id == id);
 
             if (user == null)
             {

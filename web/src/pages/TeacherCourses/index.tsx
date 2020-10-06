@@ -1,6 +1,6 @@
 import React, { useState, FormEvent, Fragment, useEffect } from 'react'
 
-import coursesApi from '../../services/Course'
+import proffyapi from '../../services/Proffy'
 import { isLogged } from '../../services/Auth'
 
 import CreatableSelect from 'react-select'
@@ -36,11 +36,11 @@ const TeacherCourses: React.FC = () => {
     const [courses, setCourses] = useState([])
     const [weekDays, setWeekdays] = useState([])
 
-    const [teacherCourseId, setteacherCourseId] = useState('')
-    const [courseId, setcourseId] = useState('')
+    const [teacherCourseId, setTeacherCourseId] = useState('')
+    const [courseId, setCourseId] = useState('')
     const [cost, setCost] = useState('')
 
-    const [teacherClassScheduleId, setTeacherCourseScheduleId] = useState('')
+    const [scheduleId, setScheduleId] = useState('')
     const [weekDay, setWeekDay] = useState(-1)
     const [from, setFrom] = useState(-1)
     const [to, setTo] = useState(-1)
@@ -52,7 +52,7 @@ const TeacherCourses: React.FC = () => {
         isLogged() // Check if you are logged in
 
         // Take all courses
-        coursesApi.get('v1/courses/', {
+        proffyapi.get('v1/courses/', {
             headers: {
                 Authorization: 'Bearer ' + proffyToken
             }
@@ -65,7 +65,7 @@ const TeacherCourses: React.FC = () => {
             alert('Erro ao carregar as matérias.')
         })
 
-        coursesApi.get('v1/enum/weekday/', {
+        proffyapi.get('v1/enum/weekday/', {
             headers: {
                 Authorization: 'Bearer ' + proffyToken
             }
@@ -78,43 +78,29 @@ const TeacherCourses: React.FC = () => {
             alert('Erro ao os dias da semana.')
         })
 
-        // Takes the teacher's courses
-        coursesApi.get('v1/teachercourses/'+userId, {
+        // Takes the teacher's courses and schedules
+        proffyapi.get('v1/users/'+userId, {
             headers: {
                 Authorization: 'Bearer ' + proffyToken
             }
         }).then((response) => {
-            setteacherCourseId(response.data[0].id)
-            setcourseId(response.data[0].courseId)
-            setCost(response.data[0].cost)
+            setTeacherCourseId(response.data.teacherCourses[0].id)
+            setCourseId(response.data.teacherCourses[0].course.id)
+            setCost(response.data.teacherCourses[0].cost)
+            setScheduleId(response.data.teacherCourses[0].schedules[0].id)
+            setWeekDay(response.data.teacherCourses[0].schedules[0].weekDay)
+            setFrom(response.data.teacherCourses[0].schedules[0].from)
+            setTo(response.data.teacherCourses[0].schedules[0].to)
         }).catch(() => {            
             console.log('Professor ainda não possui matéria cadastrada')
         })
     }, [])
 
-    useEffect(() => {
-        // Takes the teacher's courses
-        if (teacherClassScheduleId === '') {
-            coursesApi.get('v1/TeacherCourseSchedules/'+teacherCourseId, {
-                headers: {
-                    Authorization: 'Bearer ' + proffyToken
-                }
-            }).then((response) => {
-                setTeacherCourseScheduleId(response.data[0].id)
-                setWeekDay(response.data[0].weekDay)
-                setFrom(response.data[0].from)
-                setTo(response.data[0].to)
-            }).catch(() => {            
-                console.log('Nenhum horário carregado')
-            })
-        }
-    })
-
     function handleTeacherClass(e: FormEvent) {
         e.preventDefault()
 
         if (teacherCourseId === '') {
-            coursesApi.post('v1/teachercourses/', {
+            proffyapi.post('v1/teachercourses/', {
                 userId,
                 courseId,
                 cost
@@ -122,14 +108,15 @@ const TeacherCourses: React.FC = () => {
                 headers: {
                     Authorization: 'Bearer ' + proffyToken
             }}).then((response) => {
-                setteacherCourseId(response.data)
+                setTeacherCourseId(response.data.id)
                 
                 alert(response.data.message)
-            }).catch(() => {
-                alert("Não foi possível cadastrar a matéria. Favor, reveja o formulário")
+            }).catch((error) => {
+                console.log(error)
+                alert(error.response)
             })
         } else {
-            coursesApi.put('v1/teachercourses/'+teacherCourseId, {
+            proffyapi.put('v1/teachercourses/'+teacherCourseId, {
                 id: teacherCourseId,
                 userId,
                 courseId,
@@ -138,9 +125,9 @@ const TeacherCourses: React.FC = () => {
                 headers: {
                     Authorization: 'Bearer ' + proffyToken
             }}).then((response) => {
-                alert(response.data)
+                alert(response.data.message)
             }).catch((error) => {
-                alert(error.response.data)
+                alert(error.response.data.message)
             })
         }
     }
@@ -150,8 +137,8 @@ const TeacherCourses: React.FC = () => {
 
         if (teacherCourseId === '') {
             alert('Primeiro você deve cadastrar uma matéria')
-        } else if (teacherClassScheduleId === '') {
-            coursesApi.post('v1/TeacherCourseSchedules/', {
+        } else if (scheduleId === '') {
+            proffyapi.post('v1/Schedules/', {
                 teacherCourseId,
                 weekDay,
                 from,
@@ -160,15 +147,16 @@ const TeacherCourses: React.FC = () => {
                 headers: {
                     Authorization: 'Bearer ' + proffyToken
             }}).then((response) => {
-                setTeacherCourseScheduleId(response.data)
+                console.log(response)
+                setScheduleId(response.data.id)
                 
                 alert(response.data.message)
             }).catch((error) => {
-                alert(error.response.data)
+                alert(error.response.data.message)
             })
         } else {
-            coursesApi.put('v1/TeacherCourseSchedules/'+teacherClassScheduleId, {
-                id: teacherClassScheduleId,
+            proffyapi.put('v1/Schedules/'+scheduleId, {
+                id: scheduleId,
                 teacherCourseId,
                 weekDay,
                 from,
@@ -177,9 +165,9 @@ const TeacherCourses: React.FC = () => {
                 headers: {
                     Authorization: 'Bearer ' + proffyToken
             }}).then((response) => {                
-                alert(response.data)
+                alert(response.data.message)
             }).catch((error) => {
-                alert('Não foi possível criar o curso')
+                alert(error.response.data.message)
             })
         }
     }
@@ -213,7 +201,7 @@ const TeacherCourses: React.FC = () => {
                                     })}}
                                     noOptionsMessage={() => 'Nenhuma opção encontrada'}
                                     styles={customStyles}
-                                    onChange={(e: any) => {setcourseId(e.value) }}
+                                    onChange={(e: any) => {setCourseId(e.value) }}
                                     options={courses}
                                 />
                             </div>

@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 
-import usersApi from '../../services/User';
+import proffyapi from '../../services/Proffy';
 
 import PageHeader from '../../components/PageHeader'
 
@@ -21,7 +21,7 @@ const Login: React.FC<LoginProps> = () => {
     function handleLogin(e: FormEvent) {
         e.preventDefault()
 
-        usersApi.post('/v1/users/login', {
+        proffyapi.post('/v1/users/login', {
             email,
             password
         }).then((response) => {
@@ -31,7 +31,7 @@ const Login: React.FC<LoginProps> = () => {
 
             history.push("/teacher-edit")
         }).catch((error) => {
-            alert(error.response.data)
+            alert(error.response.data.message)
         })
     }
     

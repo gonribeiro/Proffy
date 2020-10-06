@@ -1,6 +1,5 @@
 import React, { useState, FormEvent, useEffect } from 'react'
-import coursesApi from '../../services/Course'
-import usersApi from '../../services/User'
+import proffyapi from '../../services/Proffy'
 
 import enumSchedule from '../../storage/enumSchedule'
 
@@ -44,7 +43,7 @@ function TeacherList() {
     const [teachersList, setTeachersList] = useState([])
 
     useEffect(() => {
-        coursesApi.get('v1/courses/', {
+        proffyapi.get('v1/courses/', {
             headers: {
                 Authorization: 'Bearer ' + proffyToken
             }
@@ -57,7 +56,7 @@ function TeacherList() {
             alert('Erro ao carregar as matérias.')
         })
 
-        coursesApi.get('v1/enum/weekday/', {
+        proffyapi.get('v1/enum/weekday/', {
             headers: {
                 Authorization: 'Bearer ' + proffyToken
             }
@@ -71,37 +70,20 @@ function TeacherList() {
     function searchTeachers(e: FormEvent) {
         e.preventDefault()
 
-        coursesApi.get('v1/teachercourses/search/'+researchedCourse+','+researchedWeekDay+','+researchedHour)
+        proffyapi.get('v1/users/search/'+researchedCourse+','+researchedWeekDay+','+researchedHour)
         .then((response) => {
-            let courseList = response.data
+            let teacherList = response.data
+            
+            let schedule = response.data[0].teacherCourses[0].schedules[0]
 
-            let teachersId = response.data.map((data:any) => {
-                return data['userId']
+            enumSchedule.map((hour: any) => {
+                return schedule.from === hour.value ? teacherList[0].from = hour.label : ''
+            })
+            enumSchedule.map((hour: any) => {
+                return schedule.to === hour.value ? teacherList[0].to = hour.label : ''
             })
 
-            usersApi.get('v1/Users/search/'+teachersId)
-            .then((response) => {
-                let teachers = response.data.map((teacher:any) => {
-                    courseList.map((course: any) => {
-                        course.teacherCourseSchedules.map((schedule:any) => {
-                            enumSchedule.map((hour: any) => {
-                                return schedule.from === hour.value ? teacher.from = hour.label : ''
-                            })
-                            enumSchedule.map((hour: any) => {
-                                return schedule.to === hour.value ? teacher.to = hour.label : ''
-                            })
-                        })
-
-                        return teacher.id === course.userId ? teacher.cost = course.cost : ''
-                    })
-
-                    return teacher
-                })
-                
-                setTeachersList(teachers)
-            }).catch(() => {
-                alert('Nenhum professor encontrado para esta pesquisa.')
-            })
+            setTeachersList(teacherList)
         }).catch(() => {
             alert('Preencha todos os campos')
         })

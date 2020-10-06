@@ -8,7 +8,7 @@ import studyIcon from '../../assets/images/icons/study.svg'
 import giveClassesIcon from '../../assets/images/icons/give-classes.svg'
 import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg'
 
-import usersapi from '../../services/User'
+import proffyapi from '../../services/Proffy'
 
 import './styles.css'
 
@@ -16,11 +16,13 @@ function Landing() {
     const [totalConnections, setTotalConnections] = useState(0);
 
     useEffect(() => {
-        usersapi.get('v1/connections/total')
+        proffyapi.get('v1/connections/total')
             .then(response => {
                 const total = response.data;
 
             setTotalConnections(total);
+        }).catch((error) => {
+            console.log(error)
         })
     }, []);
 
