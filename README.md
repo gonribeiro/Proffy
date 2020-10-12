@@ -42,7 +42,7 @@ Casos de Uso
 
 <a id="prototipo"></a>
 
-## Protótipo ([Visualizar](https://www.figma.com/file/ZRvbZ16cOsFlcir702PbS4/Proffy-Web?node-id=308122%3A1))
+## Protótipo ([Visualizar](https://www.figma.com/file/gqUWbhU9Us0tVVPkmrWZrx/Proffy-Web?node-id=308122%3A1))
 
 ![Database](docs/images/layout.jpg)
 
